@@ -1,14 +1,2 @@
-<h1>投稿一覧</h1>
-<%= form_with(model:@article, local:true) do |f| %>
-
-<div class="article_content">
-  <%= f.label :content %>
-  <%= f.text_field :content %>
-</div>
-
- <div class="article_image">
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-</div> 
-
-<% end %>
+<h1>新規投稿</h1>
+<%= render 'form', article:@article %>
