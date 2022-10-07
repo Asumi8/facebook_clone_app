@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
   belongs_to :user
-  # mount_uploader :image, ImageUploader
+  validates :content, presence: true, length:{in:1..500}
+  mount_uploader :image, ImageUploader
 end

@@ -1,7 +1,8 @@
-<%
-=begin%>
- <h1>詳細</h1>
+<h1>詳細</h1>
+<p id="notice"><%= notice %></p>
+
 <p>内容：　<%= @article.content %></p>
-<p>画像：　<%= @article.image %></p> 
-<%
-=end%>
+<p>画像：　<%= image_tag @article.image.url %></p> 
+
+<%= link_to '編集', edit_article_path(@article) %>
+<%= link_to '戻る', articles_path %>

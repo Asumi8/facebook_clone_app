@@ -1,6 +1,7 @@
 <h1>投稿一覧</h1>
+<p><%= notice %></p>
 
- <table>
+<table>
   <tr>
     <th>ユーザー名</th> 
     <th>内容</th>
@@ -11,9 +12,9 @@
       <td><%= article.user.name %></td> 
 
       <td><%= article.content %></td>
-      <td><%= link_to '詳細', article_path(params[:id]) %></td>
-      <td><%= link_to '編集', edit_article_path(params[:id])%></td>
-      <td><%= link_to '削除', article_path, method: :delete %></td> 
+      <td><%= link_to '詳細', article_path(article.id) %></td>
+      <td><%= link_to '編集', edit_article_path(article.id), data:{confirm:'本当に編集していいですか？'}%></td>
+      <td><%= link_to '削除', article_path(article.id), method: :delete, data:{confirm:'本当に削除していいですか？'} %></td> 
     </tr>
   <% end %>
 </table> 
