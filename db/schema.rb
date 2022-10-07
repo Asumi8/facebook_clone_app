@@ -1,7 +1,16 @@
-ActiveRecord::Schema.define(version: 2022_10_06_072140) do
+ActiveRecord::Schema.define(version: 2022_10_07_001308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.text "content"
+    t.text "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -12,4 +21,5 @@ ActiveRecord::Schema.define(version: 2022_10_06_072140) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "articles", "users"
 end
