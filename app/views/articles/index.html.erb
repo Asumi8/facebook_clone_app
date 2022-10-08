@@ -1,28 +1,88 @@
-<h1>投稿一覧</h1>
-<%
-=begin%>
- <p><%= notice %></p> 
-<%
-=end%>
+<h1>フィード<i class="bi bi-chat-dots-fill"></i></h1>
 
-<table>
-  <tr>
-    <th>ユーザー名</th> 
-    <th>内容</th>
-  </tr>
+<!--<p><%= notice %></p>-->
 
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.user.name %></td> 
+<div class="container">
+  <div class = "btn_new">
+    <%= link_to '新規投稿', new_article_path %>
+  </div>
 
-      <td><%= article.content %></td>
-      <td><%= link_to '詳細', article_path(article.id) %></td>
-      <td><%= link_to '編集', edit_article_path(article.id), data:{confirm:'本当に編集していいですか？'}%></td>
-      <td><%= link_to '削除', article_path(article.id), method: :delete, data:{confirm:'本当に削除していいですか？'} %></td> 
-    </tr>
-  <% end %>
-</table> 
+  <div class = "post_content">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>user</th> 
+        <th>content</th>
+        <th>photo</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<br>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.user.name %></td> 
+          <td><%= article.content %></td>
+          <td><%= image_tag article.image.url %></td>
 
-<%= link_to '新規投稿', new_article_path %>
+          <td>
+            <div class="btn-post">
+              <%= link_to '詳細', article_path(article.id) %>
+            </div>
+          </td>
+          <td>
+            <div class="btn-post">
+              <%= link_to '編集', edit_article_path(article.id), data:{confirm:'本当に編集していいですか？'}%>
+            </div>
+          </td>
+          <td>
+            <div class="btn-post">
+              <%= link_to '削除', article_path(article.id), method: :delete, data:{confirm:'本当に削除していいですか？'} %>
+            </div>
+          </td>    
+        </tr>
+      <% end %>
+    </table> 
+  </div>
+</div>
+
+
+<style>
+  .container tr img{
+    height:150px;
+  }
+
+  .btn_new{
+    text-align:center;
+    margin:20px;
+  }
+
+  .btn_new a{
+    text-decoration:none;
+    color:white;
+    background-color:rgb(95, 135, 161);
+    padding:10px;
+    border-radius:50px;
+    font-size:16px;
+  }
+
+  .post_content{
+    display:flex;
+    justify-content:center;
+  }
+
+  table tr th{
+    text-align:center;
+    font-weight:normal;
+    font-size:12px;
+    background-color:white;
+  }
+
+  .btn-post a{
+    text-decoration:none;
+    color:white;
+    background-color:rgb(131, 132, 135, 0.5);
+    padding:10px;
+    font-size:12px;
+  }
+
+</style>

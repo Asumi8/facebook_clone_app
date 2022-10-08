@@ -10,22 +10,25 @@
     </div>
   <% end %>
 
-  <div class="article_content">
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-  </div>
+  <div class = "container">
+    <div class="article_content">
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+    </div>
 
-  <div class="article_image">
-    <%= f.label :image  %>
-    <!-- 確認画面から新規作成画面に戻った時に -->
-    <!-- アップロードした画像を表示させるための記述-->
-    <%= image_tag(article.image.url) if article.image && article.image.url %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-  </div> 
+    <div class="article_image">
+      <%= f.label :image  %>
+      <!-- 確認画面から新規作成画面に戻った時に -->
+      <!-- アップロードした画像を表示させるための記述-->
+      <%= image_tag(article.image.url) if article.image && article.image.url %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div> 
 
-  <%= f.submit '投稿する' %>
-<br>
-  <%= link_to  '一覧に戻る', articles_path %>
-
-<% end %>
+    <%= f.submit '投稿する' %>
+    <br>
+    <div class = "btn">
+    <%= link_to  '一覧に戻る', articles_path %>
+    </div>
+  <% end %>
+</div>
