@@ -17,7 +17,11 @@
 
   <div class="article_image">
     <%= f.label :image  %>
+    <!-- 確認画面から新規作成画面に戻った時に -->
+    <!-- アップロードした画像を表示させるための記述-->
+    <%= image_tag(article.image.url) if article.image && article.image.url %>
     <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
   </div> 
 
   <%= f.submit '投稿する' %>

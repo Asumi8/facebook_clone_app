@@ -9,7 +9,8 @@ class ArticlesController < ApplicationController
   end
 
   def create 
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
+    render :new and return if params[:back]
     if @article.save
       redirect_to articles_path, notice:"投稿しました！"
     else
@@ -37,12 +38,13 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = Article.find(params[:id])
     @article.destroy
-    redirect_to articles_path, notice:"投稿を編集しました！"
+    redirect_to articles_path, notice:"投稿を削除しました！"
   end
 
   def confirm
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     render :new if @article.invalid?
   end
 
